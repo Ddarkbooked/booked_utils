@@ -1,4 +1,4 @@
-# booked_utils
+# Booked Utils
 
 A set of practical utilities for building Flutter apps faster: typed builders, wrappers for common patterns (`ValueNotifier`, `StreamController`), stream extensions, and chunked transformations.
 
