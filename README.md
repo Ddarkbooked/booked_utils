@@ -1,39 +1,122 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# booked_utils
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A set of practical utilities for building Flutter apps faster: typed builders, wrappers for common patterns (`ValueNotifier`, `StreamController`), stream extensions, and chunked transformations.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- **Typed Widget Builders** (`CallbackWidgetBuilder`)
+- **Reactive Wrappers** for `ValueNotifier` and `StreamController`
+- **Stream Extensions** (e.g., doOnFirst)
+- **Chunked List Stream Transformer**
 
-## Getting started
+All utilities are designed to be minimal, composable, and suitable for clean-architecture Flutter codebases.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+---
 
-## Usage
+## Installation
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Add to your `pubspec.yaml`:
 
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  booked_utils: ^<latest_version>
 ```
 
-## Additional information
+Import in your Dart files:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+import 'package:booked_utils/booked_utils.dart';
+```
+
+---
+
+## Contents
+
+### 1. `CallbackWidgetBuilder<T>`
+
+```dart
+typedef CallbackWidgetBuilder<T> = Widget Function(T value);
+```
+A generic typedef for widget builders that take a value of type `T`.
+
+---
+
+### 2. `ValueNotifierWrapper<T>`
+
+```dart
+ValueNotifierWrapper<int>(
+  initialValue: 0,
+  onChange: (value) => print('Value changed: $value'),
+  child: (notifier) => ValueListenableBuilder<int>(
+    valueListenable: notifier,
+    builder: (context, value, _) => Text('Value: $value'),
+  ),
+)
+```
+Wraps a `ValueNotifier` for local, reactive state. Automatically disposes the notifier and can notify about changes.
+
+---
+
+### 3. `StreamControllerWrapper<T>`
+
+```dart
+StreamControllerWrapper<String>(
+  child: (controller) => StreamBuilder<String>(
+    stream: controller.stream,
+    builder: (context, snapshot) => Text(snapshot.data ?? ''),
+  ),
+)
+```
+Manages the lifecycle of a `StreamController` and exposes it to a widget subtree.
+
+---
+
+### 4. `ChunkTransformer<T>`
+
+```dart
+final chunkedStream = Stream.value(List.generate(10000, (i) => i))
+  .transform(const ChunkTransformer<int>(chunkSize: 1024));
+await for (final chunk in chunkedStream) {
+  print('Chunk size: ${chunk.length}');
+}
+```
+A `StreamTransformer` that splits large incoming lists into fixed-size chunks. Useful for chunked uploads, network transfers, or file operations.
+
+---
+
+### 5. `DoOnFirstEvent<T>` Extension
+
+```dart
+Stream<int>.fromIterable([1, 2, 3])
+  .doOnFirst((first) async => print('First event: $first'))
+  .listen(print); // Prints: First event: 1, then 1, 2, 3
+```
+Allows performing an action (sync or async) on the first event of a stream, for initialization or logging.
+
+---
+
+## Why use booked_utils?
+
+- **Reduces boilerplate:** No need to manually manage controllers or notifiers for simple scenarios.
+- **Composable patterns:** Designed for local state and micro-architecture without global dependencies.
+- **Production-ready:** Null-safe, thoroughly tested in real Flutter apps.
+
+---
+
+## API Reference
+
+Each class and extension is documented with code samples in the source. See  
+- [`ValueNotifierWrapper`](./lib/value_notifier_wrapper.dart)  
+- [`StreamControllerWrapper`](./lib/stream_controller_wrapper.dart)  
+- [`ChunkTransformer`](./lib/chunk_transformer.dart)  
+- [`DoOnFirstEvent`](./lib/do_on_first_event.dart)  
+- [`CallbackWidgetBuilder`](./lib/callback_widget_builder.dart)
+
+---
+
+## License
+
+MIT
+
+---
+
