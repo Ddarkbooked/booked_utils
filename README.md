@@ -37,6 +37,7 @@ import 'package:booked_utils/booked_utils.dart';
 ```dart
 typedef CallbackWidgetBuilder<T> = Widget Function(T value);
 ```
+
 A generic typedef for widget builders that take a value of type `T`.
 
 ---
@@ -53,6 +54,7 @@ ValueNotifierWrapper<int>(
   ),
 )
 ```
+
 Wraps a `ValueNotifier` for local, reactive state. Automatically disposes the notifier and can notify about changes.
 
 ---
@@ -67,6 +69,7 @@ StreamControllerWrapper<String>(
   ),
 )
 ```
+
 Manages the lifecycle of a `StreamController` and exposes it to a widget subtree.
 
 ---
@@ -80,6 +83,7 @@ await for (final chunk in chunkedStream) {
   print('Chunk size: ${chunk.length}');
 }
 ```
+
 A `StreamTransformer` that splits large incoming lists into fixed-size chunks. Useful for chunked uploads, network transfers, or file operations.
 
 ---
@@ -91,6 +95,7 @@ Stream<int>.fromIterable([1, 2, 3])
   .doOnFirst((first) async => print('First event: $first'))
   .listen(print); // Prints: First event: 1, then 1, 2, 3
 ```
+
 Allows performing an action (sync or async) on the first event of a stream, for initialization or logging.
 
 ---
@@ -106,17 +111,15 @@ Allows performing an action (sync or async) on the first event of a stream, for 
 ## API Reference
 
 Each class and extension is documented with code samples in the source. See  
-- [`ValueNotifierWrapper`](./lib/value_notifier_wrapper.dart)  
-- [`StreamControllerWrapper`](./lib/stream_controller_wrapper.dart)  
-- [`ChunkTransformer`](./lib/chunk_transformer.dart)  
-- [`DoOnFirstEvent`](./lib/do_on_first_event.dart)  
-- [`CallbackWidgetBuilder`](./lib/callback_widget_builder.dart)
+
+- [`ValueNotifierWrapper`](./lib/wrappers/value_notifier_wrapper.dart)  
+- [`StreamControllerWrapper`](./lib/wrappers/stream_controller_wrapper.dart)  
+- [`ChunkTransformer`](./lib/transformers/chunk_transformer.dart)  
+- [`DoOnFirstEvent`](./lib/extensions/do_on_first_event.dart)  
+- [`CallbackWidgetBuilder`](./lib/typedefs/callback_widget_builder.dart)
 
 ---
 
 ## License
 
 MIT
-
----
-
