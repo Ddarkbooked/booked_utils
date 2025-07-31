@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/Ddarkbooked/booked_utils/compare/v1.0.0...v1.0.1) (2025-07-31)
+
+
+### Bug Fixes
+
+* **readme:** correct capitalization of project name in `README.md` ([79f3f89](https://github.com/Ddarkbooked/booked_utils/commit/79f3f8913beecd6db4efbfc6590d79558ba6dc9a))
+
 ## 1.0.0 (2025-07-31)
 
 
