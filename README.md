@@ -138,7 +138,7 @@ Each class and extension is documented with code samples in the source. See
 - [`ChunkTransformer`](./lib/transformers/chunk_transformer.dart)  
 - [`DoOnFirstEvent`](./lib/extensions/do_on_first_event.dart)  
 - [`CallbackWidgetBuilder`](./lib/typedefs/callback_widget_builder.dart)  
-- [`BlocPopBuilder`](./lib/wrappers/bloc_pop_builder.dart)
+- [`BlocPopBuilder`](./lib/builders/bloc_pop_builder.dart)
 
 ---
 
