@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Ddarkbooked/booked_utils/compare/v1.1.0...v1.2.0) (2025-08-26)
+
+
+### Features
+
+* **navigation:** add BlocPopBuilder for route guards ([4d4c0db](https://github.com/Ddarkbooked/booked_utils/commit/4d4c0db2105511f03af6c42b616c7a5a68d0a93d))
+
 ## [1.1.0](https://github.com/Ddarkbooked/booked_utils/compare/v1.0.1...v1.1.0) (2025-08-26)
 
 
