@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Ddarkbooked/booked_utils/compare/v1.0.1...v1.1.0) (2025-08-26)
+
+
+### Features
+
+* **builders:** add BlocPopBuilder widget ([3611267](https://github.com/Ddarkbooked/booked_utils/commit/36112679e960d91667ab2464544be98f8beb9584))
+
 ## [1.0.1](https://github.com/Ddarkbooked/booked_utils/compare/v1.0.0...v1.0.1) (2025-07-31)
 
 
