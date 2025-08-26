@@ -8,8 +8,7 @@ A set of practical utilities for building Flutter apps faster: typed builders, w
 - **Reactive Wrappers** for `ValueNotifier` and `StreamController`
 - **Stream Extensions** (e.g., doOnFirst)
 - **Chunked List Stream Transformer**
-
-All utilities are designed to be minimal, composable, and suitable for clean-architecture Flutter codebases.
+- **Navigation & Route Guards** (`BlocPopBuilder`)
 
 ---
 
@@ -26,6 +25,13 @@ Import in your Dart files:
 
 ```dart
 import 'package:booked_utils/booked_utils.dart';
+```
+
+> Note: `BlocPopBuilder` requires `flutter_bloc` in your app. Add it to your `pubspec.yaml` if you don't already use it.
+
+```yaml
+dependencies:
+  flutter_bloc: ^8.1.5
 ```
 
 ---
@@ -100,6 +106,21 @@ Allows performing an action (sync or async) on the first event of a stream, for 
 
 ---
 
+### 6. `BlocPopBuilder<B, S>`
+
+```dart
+BlocPopBuilder<MyBloc, MyState>(
+  bloc: context.read<MyBloc>(),
+  // Return `true` to BLOCK pop, `false` to ALLOW pop
+  blockWhen: (state) => state is SavingState,
+  child: const MyFormScreen(),
+)
+```
+
+A widget that controls back navigation based on BLoC/Cubit state using a `blockWhen` predicate. Internally it listens to the provided `bloc` and feeds a computed `canPop` value into `PopScope`, so system back gestures and buttons respect your rule.
+
+---
+
 ## Why use booked_utils?
 
 - **Reduces boilerplate:** No need to manually manage controllers or notifiers for simple scenarios.
@@ -116,7 +137,8 @@ Each class and extension is documented with code samples in the source. See
 - [`StreamControllerWrapper`](./lib/wrappers/stream_controller_wrapper.dart)  
 - [`ChunkTransformer`](./lib/transformers/chunk_transformer.dart)  
 - [`DoOnFirstEvent`](./lib/extensions/do_on_first_event.dart)  
-- [`CallbackWidgetBuilder`](./lib/typedefs/callback_widget_builder.dart)
+- [`CallbackWidgetBuilder`](./lib/typedefs/callback_widget_builder.dart)  
+- [`BlocPopBuilder`](./lib/wrappers/bloc_pop_builder.dart)
 
 ---
 

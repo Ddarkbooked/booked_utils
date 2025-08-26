@@ -1,7 +1,7 @@
 name: booked_utils
 description: >
   A collection of reusable Flutter utilities: typedefs, wrappers, extensions, and helpers for rapid development across multiple projects.
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/ddarkbooked/booked_utils
 repository: https://github.com/ddarkbooked/booked_utils
 
