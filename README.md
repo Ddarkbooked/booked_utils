@@ -31,7 +31,7 @@ import 'package:booked_utils/booked_utils.dart';
 
 ```yaml
 dependencies:
-  flutter_bloc: ^latest
+  flutter_bloc: ^<latest_version>
 ```
 
 ---
