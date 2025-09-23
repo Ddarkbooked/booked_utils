@@ -5,7 +5,7 @@ A set of practical utilities for building Flutter apps faster: typed builders, w
 ## Features
 
 - **Typed Widget Builders** (`CallbackWidgetBuilder`)
-- **Reactive Wrappers** for `ValueNotifier` and `StreamController`
+- **Reactive Wrappers & Listeners** for `ValueNotifier` and `StreamController`
 - **Stream Extensions** (e.g., doOnFirst)
 - **Chunked List Stream Transformer**
 - **Navigation & Route Guards** (`BlocPopBuilder`)
@@ -31,7 +31,7 @@ import 'package:booked_utils/booked_utils.dart';
 
 ```yaml
 dependencies:
-  flutter_bloc: ^8.1.5
+  flutter_bloc: ^latest
 ```
 
 ---
@@ -65,7 +65,23 @@ Wraps a `ValueNotifier` for local, reactive state. Automatically disposes the no
 
 ---
 
-### 3. `StreamControllerWrapper<T>`
+### 3. `ValueNotifierListener<T>`
+
+```dart
+final counter = ValueNotifier<int>(0);
+
+ValueNotifierListener<int>(
+  notifier: counter,
+  onChange: (value) => debugPrint('Counter: $value'),
+  child: const Text('Static child'),
+)
+```
+
+Listens to a `ValueNotifier` and calls a callback on changes without rebuilding the child. Ideal for side effects such as snackbars, animations, or logging.
+
+---
+
+### 4. `StreamControllerWrapper<T>`
 
 ```dart
 StreamControllerWrapper<String>(
@@ -80,7 +96,7 @@ Manages the lifecycle of a `StreamController` and exposes it to a widget subtree
 
 ---
 
-### 4. `ChunkTransformer<T>`
+### 5. `ChunkTransformer<T>`
 
 ```dart
 final chunkedStream = Stream.value(List.generate(10000, (i) => i))
@@ -94,7 +110,7 @@ A `StreamTransformer` that splits large incoming lists into fixed-size chunks. U
 
 ---
 
-### 5. `DoOnFirstEvent<T>` Extension
+### 6. `DoOnFirstEvent<T>` Extension
 
 ```dart
 Stream<int>.fromIterable([1, 2, 3])
@@ -106,7 +122,7 @@ Allows performing an action (sync or async) on the first event of a stream, for 
 
 ---
 
-### 6. `BlocPopBuilder<B, S>`
+### 7. `BlocPopBuilder<B, S>`
 
 ```dart
 BlocPopBuilder<MyBloc, MyState>(
@@ -134,6 +150,7 @@ A widget that controls back navigation based on BLoC/Cubit state using a `blockW
 Each class and extension is documented with code samples in the source. See  
 
 - [`ValueNotifierWrapper`](./lib/wrappers/value_notifier_wrapper.dart)  
+- [`ValueNotifierListener`](./lib/widgets/value_notifier_listener.dart)  
 - [`StreamControllerWrapper`](./lib/wrappers/stream_controller_wrapper.dart)  
 - [`ChunkTransformer`](./lib/transformers/chunk_transformer.dart)  
 - [`DoOnFirstEvent`](./lib/extensions/do_on_first_event.dart)  

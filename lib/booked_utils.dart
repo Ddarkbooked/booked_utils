@@ -1,7 +1,8 @@
 library;
 
-export 'typedefs/typedefs.dart';
-export 'wrappers/wrappers.dart';
+export 'builders/builders.dart';
 export 'extensions/extensions.dart';
 export 'transformers/transformers.dart';
-export 'builders/builders.dart';
+export 'typedefs/typedefs.dart';
+export 'widgets/widgets.dart';
+export 'wrappers/wrappers.dart';
