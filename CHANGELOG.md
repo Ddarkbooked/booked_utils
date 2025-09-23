@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/Ddarkbooked/booked_utils/compare/v1.2.0...v1.3.0) (2025-09-23)
+
+
+### Features
+
+* **widgets:** add ValueNotifierListener widget ([6dc3398](https://github.com/Ddarkbooked/booked_utils/commit/6dc3398a27874d3b12724f1498bcb137019f1e1c))
+
+
+### Bug Fixes
+
+* **pubspec:** downgrade version to 1.2.0 ([2988bb6](https://github.com/Ddarkbooked/booked_utils/commit/2988bb6a8eab8a1d22a3ced316f0a4f8cd34e266))
+* **workflows:** update `release-please` ([7ca0918](https://github.com/Ddarkbooked/booked_utils/commit/7ca0918a79c3412c12126c2218ca364a7a3fa15e))
+
 ## [1.2.0](https://github.com/Ddarkbooked/booked_utils/compare/v1.1.0...v1.2.0) (2025-08-26)
 
 
